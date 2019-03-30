@@ -294,7 +294,7 @@
 					</div>
 				</div>
 			</div>
-			@else
+			@empty
 			<div style="text-align:center;">
                 <p>Tidak ada data</p>
             </div>
