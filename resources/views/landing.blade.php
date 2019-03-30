@@ -218,8 +218,12 @@
 		</div>
 
 		<div class="lg:tw-w-3/4 md:tw-mx-auto">
-			{{-- Product --}}
-			@foreach ($products as $product)
+			{{-- Pro
+				@else
+				<div style="text-align:center;">
+                <p>Tidak ada data</p>
+            </div>duct --}}
+			@forelse ($products as $product)
 			<div
 				class="is-wide tw-flex is-stacked mobile:tw-flex-col tw-rounded-lg pdg-card">
 				<div
@@ -290,7 +294,11 @@
 					</div>
 				</div>
 			</div>
-			@endforeach
+			@else
+			<div style="text-align:center;">
+                <p>Tidak ada data</p>
+            </div>
+			@endforelse
 			{{-- Pagination --}}
 			{{ $products->links() }}
 			{{-- <ul class="pagination">
