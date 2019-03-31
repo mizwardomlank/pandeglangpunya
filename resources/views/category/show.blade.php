@@ -41,7 +41,7 @@
 				margin-right:10px;
             }
 			.skill-header-wrap>.new-nav {
-				background: #f44881;
+				background: {{ $category->background }};
 			}
 		}
 
