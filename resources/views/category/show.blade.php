@@ -39,6 +39,9 @@
 			.expanded-card-right{
 				margin-left:10px;
 				margin-right:10px;
+            }
+			.skill-header-wrap>.new-nav {
+				background: #f44881;
 			}
 		}
 
@@ -112,6 +115,21 @@
 			margin: 0 auto;
 			height: 100%;
 			width: auto;
+        }
+        .pdg-logout-icon {
+			background-color: white;
+			-webkit-mask: url("{{asset('images/icons/exit.svg')}}") no-repeat center;
+			mask: url("{{asset('images/icons/exit.svg')}}") no-repeat center;
+			width: 50px;
+			height: 50px;
+		}
+
+		.pdg-login-icon {
+			background-color: white;
+			-webkit-mask: url("{{asset('images/icons/login.svg')}}") no-repeat center;
+			mask: url("{{asset('images/icons/login.svg')}}") no-repeat center;
+			width: 50px;
+			height: 50px;
 		}
 	</style>
 </head>
@@ -131,10 +149,22 @@
 							</a>
 							<div class="md:tw-hidden tw-flex tw-items-start">
 								<div>
-									<a class="tw-block tw-leading-none">
+									{{-- <a class="tw-block tw-leading-none">
 										<div class="hamburger-nav"><span></span> <span></span> <span></span>
 											<span></span></div>
+                                    </a> --}}
+                                    @auth
+									<a href="{{ route('logout') }}" class="tw-block tw-leading-none pdg-logout-icon"
+										onclick="event.preventDefault();
+														document.getElementById('logout-form').submit();">
+										{{-- <img src="{{ asset('images/icons/exit.svg') }}" alt="Logout" style="width:50px;">	 --}}
 									</a>
+									@endauth
+									@guest
+									<a href="{{ route('login') }}" class="tw-block tw-leading-none pdg-login-icon">
+										{{-- <img src="{{ asset('images/icons/login.svg') }}" alt="Login" style="width:50px;">	 --}}
+									</a>
+									@endguest
 								</div>
 							</div>
 							<div class="tw-hidden md:tw-block tw-relative tw--mt-6">

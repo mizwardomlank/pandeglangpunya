@@ -38,6 +38,9 @@
 				margin-left:10px;
 				margin-right:10px;
 			}
+			.skill-header-wrap>.new-nav {
+				background: #f44881;
+			}
 		}
 
 		.pdg-card-content {
@@ -111,6 +114,22 @@
 			height: 100%;
 			width: auto;
 		}
+
+		.pdg-logout-icon {
+			background-color: white;
+			-webkit-mask: url("{{asset('images/icons/exit.svg')}}") no-repeat center;
+			mask: url("{{asset('images/icons/exit.svg')}}") no-repeat center;
+			width: 50px;
+			height: 50px;
+		}
+
+		.pdg-login-icon {
+			background-color: white;
+			-webkit-mask: url("{{asset('images/icons/login.svg')}}") no-repeat center;
+			mask: url("{{asset('images/icons/login.svg')}}") no-repeat center;
+			width: 50px;
+			height: 50px;
+		}
 	</style>
 </head>
 
@@ -118,7 +137,7 @@
 	<div id="root" class="page">
 		<div>
 			<div class="skill-header-wrap mobile:bg-gradient-javascript">
-				<nav class="section md:tw-overflow-y-hidden tw-pt-6 md:tw-py-0 md:tw-overflow-x-hidden new-nav tw-pb-8">
+				<nav class="section md:tw-overflow-y-hidden tw-pt-6 md:tw-py-0 md:tw-overflow-x-hidden new-nav tw-pb-8 pdg-nav">
 					<div>
 						<div id="nav-top"
 							class="tw-flex tw-flex-row tw-justify-between md:tw-items-center tw-relative tw-mb-6 md:tw-pt-8 md:tw-pb-4">
@@ -129,10 +148,22 @@
 							</a>
 							<div class="md:tw-hidden tw-flex tw-items-start">
 								<div>
-									<a class="tw-block tw-leading-none">
+									{{-- <a href="#" class="tw-block tw-leading-none">
 										<div class="hamburger-nav"><span></span> <span></span> <span></span>
 											<span></span></div>
+									</a> --}}
+									@auth
+									<a href="{{ route('logout') }}" class="tw-block tw-leading-none pdg-logout-icon"
+										onclick="event.preventDefault();
+														document.getElementById('logout-form').submit();">
+										{{-- <img src="{{ asset('images/icons/exit.svg') }}" alt="Logout" style="width:50px;">	 --}}
 									</a>
+									@endauth
+									@guest
+									<a href="{{ route('login') }}" class="tw-block tw-leading-none pdg-login-icon">
+										{{-- <img src="{{ asset('images/icons/login.svg') }}" alt="Login" style="width:50px;">	 --}}
+									</a>
+									@endguest
 								</div>
 							</div>
 							<div class="tw-hidden md:tw-block tw-relative tw--mt-6">
